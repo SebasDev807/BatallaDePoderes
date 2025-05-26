@@ -1,4 +1,4 @@
-package org.juego.estructuras;
+package org.juego.estructuras.cola;
 
 import org.juego.modelos.Carta;
 
