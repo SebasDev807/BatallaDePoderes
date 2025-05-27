@@ -46,7 +46,7 @@ public class Juego {
         System.out.println("Tu mazo tiene " + mazoJugador.getSize() + " cartas.");
         System.out.println("El oponente CPU también tiene " + mazoCPU.getSize() + " cartas.\n");
 
-        for (int ronda = 1; ronda <= 3; ronda++) {
+        for (int ronda = 1; ronda <= 5; ronda++) {
             System.out.println("--- Ronda " + ronda + " ---");
 
             // Mostrar cartas disponibles para jugador
