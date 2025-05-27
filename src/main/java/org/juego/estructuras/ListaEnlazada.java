@@ -11,27 +11,22 @@ import java.util.Random;
 public class ListaEnlazada {
 
     private NodoCarta cabeza;
-    private int size; //use este nombre porque usa caracteres especiales como 'ñ' es una mala practica
+    private int size; // No usar caracteres especiales en nombres
 
-    //Constructor que inicializa la lista enlazada
     public ListaEnlazada() {
         this.cabeza = null;
         this.size = 0;
     }
 
     /**
-     * Agregar una carta al final de la lista.
-     *
-     * @param carta Carta a agregar
-     * @author Dhayana Valentina Muñoz Fernandez
+     * Agrega una carta al final de la lista.
      */
-
     public void agregarCarta(Carta carta) {
         NodoCarta nuevo = new NodoCarta(carta);
         if (cabeza == null) {
             cabeza = nuevo;
         } else {
-            NodoCarta actual = new NodoCarta(carta);
+            NodoCarta actual = cabeza;  // <-- corregido aquí
             while (actual.getSiguiente() != null) {
                 actual = actual.getSiguiente();
             }
@@ -41,13 +36,9 @@ public class ListaEnlazada {
     }
 
     /**
-     * Devuelve una carta aleatoria de la lista y la elimina
-     *
-     * @return Carta aleatoria o null si la lista esta vacía
-     * @author Tulio Martinez
+     * Devuelve una carta aleatoria de la lista y la elimina.
      */
     public Carta obtenerCartaAleatoria() {
-
         if (size == 0) return null;
 
         Random random = new Random();
@@ -62,9 +53,9 @@ public class ListaEnlazada {
         }
 
         if (anterior == null) {
-            cabeza = actual.getSiguiente(); //Era la cabeza;
+            cabeza = actual.getSiguiente(); // Era la cabeza
         } else {
-            actual.setSiguiente(actual.getSiguiente());
+            anterior.setSiguiente(actual.getSiguiente()); // <-- corregido aquí
         }
 
         size--;
@@ -73,10 +64,7 @@ public class ListaEnlazada {
 
     /**
      * Muestra todas las cartas en la lista.
-     *
-     * @author Tulio Martinez
      */
-
     public void mostrarBaraja() {
         NodoCarta actual = cabeza;
         while (actual != null) {
@@ -85,14 +73,30 @@ public class ListaEnlazada {
         }
     }
 
-    public boolean estaVacia() {
-        return size == 0;
-    }
+    /**
+     * Obtiene y elimina una carta por nombre.
+     */
+    public Carta obtenerYEliminarCartaPorNombre(String nombre) {
+        if (cabeza == null) return null;
 
-    public int getSize() {
-        return size;
+        NodoCarta actual = cabeza;
+        NodoCarta anterior = null;
+
+        while (actual != null) {
+            if (actual.getCarta().getNombre().equalsIgnoreCase(nombre)) {
+                if (anterior == null) {
+                    cabeza = actual.getSiguiente();
+                } else {
+                    anterior.setSiguiente(actual.getSiguiente());
+                }
+                size--;
+                return actual.getCarta();
+            }
+            anterior = actual;
+            actual = actual.getSiguiente();
+        }
+        return null; // No encontrada
     }
 
 
 }
-

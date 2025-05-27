@@ -2,6 +2,9 @@ package org.juego.estructuras.cola;
 
 import org.juego.modelos.Carta;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Estructura de cola que representa el mazo de un jugador
  * Funciona en orden FIFO (First In - First Out)
@@ -72,12 +75,49 @@ public class Cola {
         return size;
     }
 
+    public List<Carta> toList() {
+        List<Carta> lista = new ArrayList<>();
+        NodoCola actual = this.frente;
+        while (actual != null) {
+            lista.add(actual.getCarta());
+            actual = actual.getSiguiente();
+        }
+        return lista;
+    }
+
     public void mostrarCartas(){
         NodoCola actual = frente;
         while(actual != null){
             System.out.println(actual.getCarta());
             actual = actual.getSiguiente();
         }
+    }
+
+    public Carta eliminarCartaPorNombre(String nombre) {
+        if (estaVacia()) return null;
+
+        NodoCola actual = frente;
+        NodoCola anterior = null;
+
+        while (actual != null) {
+            if (actual.getCarta().getNombre().equalsIgnoreCase(nombre)) {
+                // Si es el frente
+                if (anterior == null) {
+                    frente = actual.getSiguiente();
+                    if (frente == null) fin = null; // Cola queda vacía
+                } else {
+                    anterior.setSiguiente(actual.getSiguiente());
+                    if (actual == fin) { // Si era el último, actualizar fin
+                        fin = anterior;
+                    }
+                }
+                size--;
+                return actual.getCarta();
+            }
+            anterior = actual;
+            actual = actual.getSiguiente();
+        }
+        return null; // No encontrado
     }
 
 }
