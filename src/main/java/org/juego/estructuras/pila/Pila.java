@@ -18,12 +18,7 @@ public class Pila {
         this.size = 0;
     }
 
-    /**
-     * Inserta una carta en la cima de la pila.
-     *
-     * @param carta Carta derrotada a registrar.
-     */
-
+    // Inserta una carta en la cima de la pila.
     public void apilar(Carta carta) {
         NodoPila nuevo = new NodoPila(carta);
         nuevo.setSiguiente(cima);
@@ -31,13 +26,12 @@ public class Pila {
         size++;
     }
 
-    /**
-     * Retira y devuelve la carta en la cima de la pila.
-     *
-     * @return Carta retirada, o null si la pila está vacía.
-     */
+    // Retira y devuelve la carta en la cima de la pila.
+    // @return Carta retirada, o null si la pila está vacía.
     public Carta desapilar() {
-        if (estaVacia()) return null;
+        if (estaVacia()) {
+            return null;
+        }
 
         Carta carta = cima.getCarta();
         cima = cima.getSiguiente();
@@ -46,13 +40,16 @@ public class Pila {
         return carta;
     }
 
-    /**
-     * @return carrta en la cima sin retirarla
-     */
-    public Carta verCima() {
-        return estaVacia() ? null : cima.getCarta();
+    public void agregarDerrota(Carta carta) {
+        if (carta != null) {
+            this.apilar(carta);
+        } else {
+            System.out.println("La Carta derrotada es NULL");
+        }
     }
 
+    
+     // @return carrta en la cima sin retirarla 
     public boolean estaVacia() {
         return cima == null;
     }
@@ -61,16 +58,14 @@ public class Pila {
         return size;
     }
 
-    /**
-     * Muestra las cartas derrotadas en orden LIFO.
-     */
+    
+    // Muestra las cartas derrotadas en orden LIFO.
     public void mostrarDerrotas() {
+        System.out.println("C E M E N T E R I O :");
         NodoPila actual = cima;
         while (actual != null) {
             System.out.println(actual.getCarta());
             actual = actual.getSiguiente();
         }
     }
-
-
 }

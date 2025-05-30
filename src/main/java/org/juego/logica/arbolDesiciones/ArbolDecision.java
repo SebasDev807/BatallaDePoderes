@@ -21,10 +21,8 @@ public class ArbolDecision {
         construirArbol();
     }
 
-    /**
-     * Construye un arból de decisión simple basado en el poder y tipo de jugador
-     */
-
+ 
+    // Construye un arból de decisión simple basado en el poder y tipo de jugador
     private void construirArbol() {
         raiz = new NodoDecision("¿Poder del jugador > 80?");
 
@@ -67,9 +65,8 @@ public class ArbolDecision {
         return actual.getCarta();
     }
 
-    /**
-     * Evalúa si el tipo del jugador es débil frente al CPU (ejemplo básico).
-     */
+    
+    // Evalúa si el tipo del jugador es débil frente al CPU (ejemplo básico).
     private boolean esTipoDebil(String tipoJugador) {
         return tipoJugador.equals("Fuego"); // Suponiendo que el CPU es Agua
     }

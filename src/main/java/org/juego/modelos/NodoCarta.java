@@ -5,8 +5,8 @@ package org.juego.modelos;
  */
 public class NodoCarta {
 
-    private Carta carta;
-    private NodoCarta siguiente;
+    public  Carta carta;
+    public NodoCarta siguiente;
 
     /**
      * Constructor para inicializar un nodo con una carta

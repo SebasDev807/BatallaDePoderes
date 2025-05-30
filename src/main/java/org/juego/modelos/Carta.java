@@ -4,7 +4,7 @@ public class Carta {
 
     private String nombre;
     private String tipo; // {fuego, agua, tierra, aire}
-    private int poder;
+    public int poder;
 
     /**
      * Constructor: Inicializamos las cartas
@@ -19,6 +19,7 @@ public class Carta {
         this.tipo = tipo;
         this.poder = poder;
     }
+    
 
     // Getters
     public String getNombre() {
@@ -59,13 +60,15 @@ public class Carta {
         }
     }
 
-    /**
-     * Representación en texto de la carta
-     */
+    // Representación en texto de la carta
     @Override
     public String toString() {
-        return "\"" + nombre + "\" (" + tipo + ") – Poder: " + poder;
+        return "\"" + nombre + "\" [" + tipo + "]  Poder: " + poder;
     }
+    
+    
 
 
+
+    
 }

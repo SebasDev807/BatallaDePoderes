@@ -2,7 +2,6 @@ package org.juego.logica.hash;
 
 /**
  * Tabla hash personalizada para registrar los jugadores
- *
  * @author Edwin Constain
  */
 public class TablaHash {
@@ -14,9 +13,7 @@ public class TablaHash {
         tabla = new NodoHash[CAPACIDAD];
     }
 
-    /**
-     * Calcula el incice hash para una clave.
-     */
+    // Calcula el incice hash para una clave.
     private int hash(String clave) {
         int hash = 0;
         for (int i = 0; i < clave.length(); i++) {
@@ -25,9 +22,7 @@ public class TablaHash {
         return hash % CAPACIDAD;
     }
 
-    /**
-     * Inserta o actualiza un registro para un jugador.
-     */
+    // Inserta o actualiza un registro para un jugador.
     public void put(String clave, RegistroJugador valor) {
         int indice = hash(clave);
         NodoHash actual = tabla[indice];
@@ -46,9 +41,7 @@ public class TablaHash {
 
     }
 
-    /**
-     * Recupera el registro de un jugador por su clave.
-     */
+    //Recupera el registro de un jugador por su clave.
     public RegistroJugador get(String clave) {
         int indice = hash(clave);
         NodoHash actual = tabla[indice];
@@ -64,9 +57,7 @@ public class TablaHash {
     }
 
 
-    /**
-     * Muestra todos los registros de la tabla.
-     */
+    // Muestra todos los registros de la tabla.
     public void mostrarTabla() {
         for (int i = 0; i < CAPACIDAD; i++) {
             NodoHash actual = tabla[i];

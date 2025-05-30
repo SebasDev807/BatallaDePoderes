@@ -20,12 +20,8 @@ public class Cola {
         size = 0;
     }
 
-    /**
-     * Inserta una carta al final de la cola.
-     *
-     * @param carta Carta a insertar
-     */
-
+    
+     //Inserta una carta al final de la cola.
     public void encolar(Carta carta) {
         NodoCola nuevo = new NodoCola(carta);
 
@@ -39,9 +35,8 @@ public class Cola {
         size++;
     }
 
-    /**
-     * @return Carta retirada, o null si la cola está vacía
-     */
+    
+     // @return Carta retirada, o null si la cola está vacía
     public Carta desencolar() {
         if (estaVacia()) return null;
 
@@ -55,14 +50,10 @@ public class Cola {
 
     }
 
-    /**
-     *
-     * devuelve la carta al frente sin retirarla
-     */
+    // devuelve la carta al frente sin retirarla
     public Carta verFrente(){
         return estaVacia() ? null : frente.getCarta(); //Esto es un operador ternario '?' representa if ':' representa else
     }
-
 
     public boolean estaVacia() {
         return frente == null;
